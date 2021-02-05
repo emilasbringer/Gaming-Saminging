@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="index.html"><button class="exitbutton">Exit</button></a>
+    <div class="square"></div>
+    <div class="game">
+    <button class="startbutton" onclick="startgame()">Start</button>
+    <div class="pointcounter"><p id=points>Points: 0</p></div>
+    <div class="bigchungsgrid">
+        <button class="button" onclick="button1activate(0)" ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(1)"ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(2)"ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(3)"ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(4)"ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(5)"ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(6)"ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(7)"ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(8)"ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(9)"ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(10)"ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(11)"ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(12)"ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(13)"ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(14)"ondragstart="return false"></button>
+        <button class="button" onclick="button1activate(15)"ondragstart="return false"></button>
+    </div>
+    </div>
+</body>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+
+body{
+    background-color: grey;
+    font-family: 'Exo 2', sans-serif;
+}
+.bigchungsgrid{
+    width: 413px;
+}
+.startbutton {
+    font-family: 'Exo 2', sans-serif;
+    margin-left: 180px;
+    margin-bottom: 10px;
+    width: 50px;
+    height: 50px;
+}
+.pointcounter {
+    margin: auto;
+    width: 100px;
+}
+.button {
+    width: 100px;
+    height: 100px;    
+    background-color: white;
+    border: none;
+    outline: none;
+}
+.game {
+    width: 413px;
+    margin: auto;
+}
+.square {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    float: left;
+    margin-left: 20px;
+    position: relative;
+    animation: sqani 1s infinite;
+}
+.exitbutton{
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 50px;
+    font-family: 'Exo 2', sans-serif;
+}
+
+@keyframes sqani {
+    0%      {top: 130px; left: 0px;}
+    25%     {top: 480px; left: 0px;}
+    50%     {top: 480px; left: 10%;}
+    75%     {top: 130px; left: 10%;}
+    100%    {top: 130px; left: 0px;}
+}
+</style>
+<script>
+var alive = true;
+var points = 0;
+var text = "Points: ";
+var p;
+var numA;
+var numB;
+var numC;
+var findsquare;
+var failsafe = 0;
+var randomnumber;
+
+function startgame(){
+    for(var i = 0; i <1;){
+        numA = Math.floor(Math.random() * 16);
+        numB = Math.floor(Math.random() * 16);
+        numC = Math.floor(Math.random() * 16);
+        if (numA !== numB && numB !== numC && numC !== numA){    
+        console.log(numA);
+        console.log(numB);
+        console.log(numC); 
+        document.getElementsByClassName("button")[numA].style.backgroundColor = "black";
+        document.getElementsByClassName("button")[numB].style.backgroundColor = "black";
+        document.getElementsByClassName("button")[numC].style.backgroundColor = "black";
+        i++;
+        }
+    }
+}
+
+function button1activate(a){
+    buttonnumber = a;
+    if(document.getElementsByClassName("button")[a].style.backgroundColor == "black"){
+
+        document.getElementsByClassName("button")[a].style.backgroundColor = "white";
+        points++;
+        p = text.concat(points);
+        document.getElementById("points").innerHTML = p;
+        findsquare = true;
+        console.log("findingsquare...");
+
+        while(findsquare){
+        failsafe++;
+        randomnumber = Math.floor(Math.random() * 16);
+        console.log(randomnumber);
+        console.log("User clicked square " + a);
+            if(document.getElementsByClassName("button")[randomnumber].style.backgroundColor = "white"){
+                console.log("Found a white square that was not clicked with the number " + randomnumber);
+                document.getElementsByClassName("button")[randomnumber].style.backgroundColor = "black";
+                console.log("Set square " + randomnumber + " to black");
+                findsquare = false;
+            }
+            if(failsafe > 5){
+            findsquare = false;
+            failsafe = 0;
+            }
+        }
+    }
+}
+
+</script>
+</html>

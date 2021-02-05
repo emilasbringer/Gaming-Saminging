@@ -3,70 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>⚫Bigshaqgaming⚫</title>
 </head>
 <body>
-    <button class="startbutton" onclick="startgame">Start</button>
-    <div class="pointcounter"><p>Points:</p><p id=points></p></div>
-    <div class="bigchungsgrid">
-        <button class="button" onclick="button1activate(0)"></button>
-        <button class="button" onclick="button1activate(1)"></button>
-        <button class="button" onclick="button1activate(2)"></button>
-        <button class="button" onclick="button1activate(3)"></button>
-        <button class="button" onclick="button1activate(4)"></button>
-        <button class="button" onclick="button1activate(5)"></button>
-        <button class="button" onclick="button1activate(6)"></button>
-        <button class="button" onclick="button1activate(7)"></button>
-        <button class="button" onclick="button1activate(8)"></button>
-        <button class="button" onclick="button1activate(9)"></button>
-        <button class="button" onclick="button1activate(10)"></button>
-        <button class="button" onclick="button1activate(11)"></button>
-        <button class="button" onclick="button1activate(12)"></button>
-        <button class="button" onclick="button1activate(13)"></button>
-        <button class="button" onclick="button1activate(14)"></button>
-        <button class="button" onclick="button1activate(15)"></button>
-    </div>
+    <header>
+        <div class="headeritems">
+            <div class="headeritem"><div class="headeritemtext"><a href="Pissgame.html"><button>Gridgame3000</button></a></div></div>
+            <div class="headeritem"><div class="headeritemtext"><a href="catchtheemil.html"><button>Catchtheemil</button></a></div></div>
+            <div class="headeritem"><div class="headeritemtext"><a href=""><button>In development</button></a></div></div>
+            <div class="headeritem"><div class="headeritemtext"><a href=""><button>In development</button></a></div></div>
+        </div>
+        
+    </header>
+    <h1>Big shaq gaming.se</h1>
 </body>
 <style>
-body{
-    padding: 2px;
-}
-.bigchungsgrid{
-    width: 413px;
-}
-.startbutton {
-    margin-left: 180px;
-    margin-bottom: 10px;
-    width: 50px;
-    height: 50px;
-}
-.button {
-    width: 100px;
-    height: 100px;    
-    background-color: white;
-}
-</style>
-<script>
-var alive;
-alive = true;
-var points;
-points = 0;
-var buttonnumber
+    @import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
 
-
-function startgame(){
-    while(alive){
-       document.getElementById("points").innerHTML = points;
-       buttonnumber = Math.floor(Math.random() * 16);
-       x[buttonnumber].style.backgroundColor = "black";
+    body{
+        margin: 0px;
+        background-color: aquamarine;
+        font-family: 'Exo 2', sans-serif;
     }
-}
-
-function button1activate(a){
-  var x = document.getElementsByClassName("button");
-  x[a].style.backgroundColor = "white";
-  points++;
-}
-
-</script>
+    h1 {
+        text-align: center;
+        margin-top: 200px;
+        font-size: 5rem;   
+    }
+    button {
+        font-family: 'Exo 2', sans-serif;
+        margin: 0px;
+        height: 100%;
+        width: 100%;
+        background-color: darkcyan;
+        border: none;
+        outline: none;
+    }
+    header {
+        width: 100%;
+        height: 45px;
+        background-color: rgb(139, 255, 139);
+    }
+    .headeritems {
+        height: 100%;
+        display: flex;
+        width: fit-content;
+        margin: auto;
+    }
+    .headeritemtext {
+        height: 100%;
+        text-align: center;
+        
+    }
+    .headeritem {
+        width: 20%;
+        height: 100%;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-left: 2px solid;
+        border-right: 2px solid;
+        border-color: black;
+    }
+</style>
 </html>
