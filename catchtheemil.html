@@ -9,7 +9,7 @@
     <a href="index.html"><button class="exitbutton">Exit</button></a>
     <div id="emilid" class="emil"><img src="/images/emil1.jpg" draggable="true" ondragstart="drag(event)" width="50px" height="50px"></div>
     <div id="deathbox"  class="trashcan" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    <div id="theforcesofevilhavebeenbanished">The forces of evil have been banished from our realm mighty adventurer. Thanks to you Emil Södermanen has been captured and put into a piss prison made of dead fish where he will spend the rest of his remaining days. Our realm is safe once again thanks to you mighty adventurer, take this cheese as a token of our appreciation</div>
+    <div id="endtext" class="endtextclass"> The forces of evil have been banished from our realm mighty adventurer. Thanks to you Emil Södermanen has been captured and put into a piss prison made of dead fish where he will spend the rest of his remaining days. Our realm is safe once again thanks to you mighty adventurer, take this cheese as a token of our appreciation</div>
 </body>
 <style>
     body {
@@ -43,12 +43,13 @@
         background-size: 50px;
 
     }
-    #theforcesofevilhavebeenbanished {
-        display: show;
+    .endtextclass {
+        display: none;
         font-family: Arial, Helvetica, sans-serif;
         width: 450px;
         height: 600px;
         background-color: whitesmoke;
+        color: black;
         margin: auto;
         border: solid 2px;
         padding: 20px 20px 0px 20px;
@@ -69,7 +70,6 @@
     }
 </style>
 <script>
-document.getElementById("theforcesofevilhavebeendefeated").style.display = "none";
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -83,7 +83,10 @@ function drop(ev) {
     console.log("element dropped");
     document.getElementById("deathbox").style.backgroundImage = "url(/images/emil1.jpg)";
     document.getElementById("deathbox").style.backgroundSize = "68px";
-    document.getElementById("emilid").style.display = "none";    
+    document.getElementById("emilid").style.display = "none";   
+    document.getElementById("endtext").style.display = "show";
+
+    
 }
 
 </script>
