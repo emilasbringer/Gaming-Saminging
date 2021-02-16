@@ -7,10 +7,14 @@
 </head>
 <body>
     <a href="index.html"><button class="exitbutton">Exit</button></a>
+    <div id="emilid" class="emil"><img src="/images/emil1.jpg" draggable="true" ondragstart="drag(event)" width="50px" height="50px"></div>
+    <div id="deathbox"  class="trashcan" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="theforcesofevilhavebeenbanished">The forces of evil have been banished from our realm mighty adventurer. Thanks to you Emil Södermanen has been captured and put into a piss prison made of dead fish where he will spend the rest of his remaining days. Our realm is safe once again thanks to you mighty adventurer, take this cheese as a token of our appreciation</div>
 </body>
 <style>
     body {
-        background-color: aquamarine;
+        background-color: rgb(127, 255, 212);
+        display: flex;
     }
     .exitbutton{
     border: none;
@@ -19,5 +23,68 @@
     width: 50px;
     font-family: 'Exo 2', sans-serif;
     }
+    .emil {
+        display: show;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 650px;
+        top: 200px;
+        animation: floatbutton 10s infinite;
+    }
+    .trashcan {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        right: 35px;
+        bottom: 35px;
+        border: solid 2px;   
+        background-image: url('/images/canpic.png');
+        background-size: 50px;
+
+    }
+    #theforcesofevilhavebeenbanished {
+        display: show;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 450px;
+        height: 600px;
+        background-color: whitesmoke;
+        margin: auto;
+        border: solid 2px;
+        padding: 20px 20px 0px 20px;
+    }
+
+    @keyframes floatbutton {
+        0% {left: 650px; top: 200px;}
+        10% {left: 300px; top: 300px;}
+        20% {left: 350px; top: 400px;}
+        30% {left: 400px; top: 500px;}
+        40% {left: 800px; top: 300px;}
+        50% {left: 300px; top: 400px;}
+        60% {left: 700px; top: 500px;}
+        70% {left: 800px; top: 100px;}
+        80% {left: 900px; top: 200px;}
+        90% {left: 750px; top: 300px;}
+        100% {left: 650px; top: 200px;}
+    }
 </style>
+<script>
+document.getElementById("theforcesofevilhavebeendefeated").style.display = "none";
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    console.log("element dragged");
+}
+
+function drop(ev) {
+    console.log("element dropped");
+    document.getElementById("deathbox").style.backgroundImage = "url(/images/emil1.jpg)";
+    document.getElementById("deathbox").style.backgroundSize = "68px";
+    document.getElementById("emilid").style.display = "none";    
+}
+
+</script>
 </html>
