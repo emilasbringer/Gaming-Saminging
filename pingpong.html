@@ -12,7 +12,12 @@
     <div class="titlebox">MegaDeathPingDingPingSmong</div>
 
     <div class="gamebox">
-           
+            <div class="paddle" id="p1"></div>
+            <div class="paddle" id="p2"></div>
+            <div class="pingpongball" id="ping"></div>
+            <div class="deathzone" id="d1"></div>
+            <div class="deathzone" id="d2"></div>
+        
     </div>
 
 
@@ -25,6 +30,7 @@
     }
 
     .exitbutton{
+        position: absolute;
         border: none;
         outline: none;
         height: 50px;
@@ -33,10 +39,13 @@
     }
 
     .titlebox {
+        position: relative;
+        font-size: 2rem;
         font-family: 'Exo 2', sans-serif;
         display: block;
         margin: auto;
-        width: 20vw;
+        width: 40vw;
+        text-align: center;
     }
 
     .gamebox {
@@ -45,8 +54,80 @@
         height: 40vw;
         background-color: whitesmoke;
         margin: auto;
+        border: 1px solid;
+    }
+
+    .paddle {
+        display: block;
+        position: absolute;
+        height: 50px;
+        width: 10px;
+        background: black;
+    }
+
+    .pingpongball {
+        display: block;
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        border-radius: 50px;
+        background: grey;
+    }
+
+    .deathzone {
+        display: block;
+        position: absolute;
+        width: 5px;
+        height: 88.6%;
+        background: red;
+    }
+
+    #p1 {
+        margin-left: 20px;
+        margin-top: 250px;
+    }
+
+    #p2{
+        margin-left: 960px;
+        margin-top: 250px;
+    }
+
+    #d2 {
+        margin-left: 990.5px;
     }
 
 </style>
 </body>
+<script>
+    var direction = 0;
+    var speed = 5;
+    var p1pos = 50;
+    var p2pos = 50;
+    var ms = 10;
+
+    
+    //arrowup
+    document.addEventListener('keydown', function(event) {
+    if(event.keyCode == 38) {
+        p1pos = p1pos - ms;
+        document.getElementById("p2").style.top = p1pos + "px";
+    }
+
+    //arrowdown
+    if(event.keyCode == 40) {
+        p1pos = p1pos + ms;
+        document.getElementById("p2").style.top = p1pos + "px";
+    }
+    if(event.keyCode == 87) {
+        p1pos = p1pos - ms;
+        document.getElementById("p1").style.top = p1pos + "px";
+    }
+
+    //arrowdown
+    if(event.keyCode == 83) {
+        p1pos = p1pos + ms;
+        document.getElementById("p1").style.top = p1pos + "px";
+    }
+    });
+</script>
 </html>
