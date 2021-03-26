@@ -9,9 +9,23 @@
 <body>
 <a href="index.html"><button class="exitbutton">Exit</button></a>
 <div class="buttons">
-    <img src="tictactoeimg/None.jpg">
-    <img src="tictactoeimg/Circle.png">
+    <div class="grid-container" id="grid">
+      <div class="grid-item" id="1" onmouseover="displayitem(1)" onmouseout="stopdisplay(1)" onclick="clickeditem(1)"><div class="x" id="x1"></div><div class="x2" id="x21"></div><div class="o" id="o1"><div class="oinner"></div></div></div>
+      <div class="grid-item" id="2" onmouseover="displayitem(2)" onmouseout="stopdisplay(2)" onclick="clickeditem(2)"><div class="x" id="x2"></div><div class="x2" id="x22"></div><div class="o" id="o2"><div class="oinner"></div></div></div>
+      <div class="grid-item" id="3" onmouseover="displayitem(3)" onmouseout="stopdisplay(3)" onclick="clickeditem(3)"><div class="x" id="x3"></div><div class="x2" id="x23"></div><div class="o" id="o3"><div class="oinner"></div></div></div>
+      <div class="grid-item" id="4" onmouseover="displayitem(4)" onmouseout="stopdisplay(4)" onclick="clickeditem(4)"><div class="x" id="x4"></div><div class="x2" id="x24"></div><div class="o" id="o4"><div class="oinner"></div></div></div>
+      <div class="grid-item" id="5" onmouseover="displayitem(5)" onmouseout="stopdisplay(5)" onclick="clickeditem(5)"><div class="x" id="x5"></div><div class="x2" id="x25"></div><div class="o" id="o5"><div class="oinner"></div></div></div>
+      <div class="grid-item" id="6" onmouseover="displayitem(6)" onmouseout="stopdisplay(6)" onclick="clickeditem(6)"><div class="x" id="x6"></div><div class="x2" id="x26"></div><div class="o" id="o6"><div class="oinner"></div></div></div>
+      <div class="grid-item" id="7" onmouseover="displayitem(7)" onmouseout="stopdisplay(7)" onclick="clickeditem(7)"><div class="x" id="x7"></div><div class="x2" id="x27"></div><div class="o" id="o7"><div class="oinner"></div></div></div>
+      <div class="grid-item" id="8" onmouseover="displayitem(8)" onmouseout="stopdisplay(8)" onclick="clickeditem(8)"><div class="x" id="x8"></div><div class="x2" id="x28"></div><div class="o" id="o8"><div class="oinner"></div></div></div>
+      <div class="grid-item" id="9" onmouseover="displayitem(9)" onmouseout="stopdisplay(9)" onclick="clickeditem(9)"><div class="x" id="x9"></div><div class="x2" id="x29"></div><div class="o" id="o9"><div class="oinner"></div></div></div>
+    </div>
 </div>
+      
+<div class="winnertext">
+    <span id="winner"> Wins!</span>
+</div>
+
 </body>
 <style>
 .exitbutton{
@@ -19,20 +33,133 @@
     outline: none;
     height: 50px;
     width: 50px;
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'Exo 2', sans-serif; 
+    }
+
+.winnertext {
+    display: block;
+    position: absolute;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    width: 200px;
+    margin-left: 40vw;
+    border: 2px solid rgb(255, 226, 226);
 }
-.buttons{
-    width: 330px;
-    height: 330px;
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #2196F3;
+  padding: 10px;
+  height: 500px;
+  width: 500px;
+  margin: auto;
+}
+.grid-item {
+  position: relative;
+  background-color: rgb(159 215 255);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 2px;
+  font-size: 30px;
+  text-align: center; 
+}
+
+.o {
+    display: none;
+    position: relative;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 153, 255);
+    
+}
+
+.oinner {
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    width: 85%;
+    height: 85%;
+    background: rgb(159 215 255);
+    top: 12px;
+    left: 12px;
+}
+
+.x {
+    display: none;
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    background: rgb(0, 153, 255);
     margin: auto;
+    transform: rotate(45deg);
+    left: 75px;
 }
-button{
+
+.x2 {
+    display: none;
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    background: rgb(0, 153, 255);
     margin: auto;
-    width: 100px;
-    height: 100px;
+    transform: rotate(-45deg);
+    top: 0px;
+    left: 75px;
 }
+
 </style>
 <script>
+let turn = true
+let played = [false, false, false, false, false, false, false, false, false]
+const container = document.getElementById("grid")
+
+
+function item(i) {
+    x = document.getElementsByClassName("grid-item")[i-1];
+    return x
+}
+
+function displayitem(i) {
+    if(!played[i]){
+        if(turn){
+            document.getElementById("o" + i).style.display = "block";
+        }
+        if(!turn) {
+            document.getElementById("x" + i).style.display = "block";
+            document.getElementById("x2" + i).style.display = "block";
+        }
+    }
+}
+
+function stopdisplay(i) {
+    if(!played[i]) {
+        document.getElementById("o" + i).style.display = "none";
+        document.getElementById("x" + i).style.display = "none";
+        document.getElementById("x2" + i).style.display = "none";
+    }
+}
+
+function clickeditem(i) {
+    if(!played[i]) {
+        if(turn) {
+            played[i] = true;
+            document.getElementById("o" + i).style.display = "block";
+            turn = false
+        }
+    }
+    if(!played[i]) {
+        if(!turn) {
+            played[i] = true;
+            document.getElementById("x" + i).style.display = "block";
+            document.getElementById("x2" + i).style.display = "block";
+            turn = true;
+            
+        }
+    }
+    
+}
 
 </script>
 </html>

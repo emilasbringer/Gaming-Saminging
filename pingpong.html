@@ -17,16 +17,12 @@
             <div class="pingpongball" id="ping"></div>
             <div class="deathzone" id="d1"></div>
             <div class="deathzone" id="d2"></div>
-        
     </div>
-
-
-
-
 
 <style>
     body {
         background: grey;
+        overflow: hidden;
     }
 
     .exitbutton{
@@ -50,6 +46,7 @@
 
     .gamebox {
         display: block;
+        position: relative;
         width: 70vw;
         height: 40vw;
         background-color: whitesmoke;
@@ -83,50 +80,69 @@
     }
 
     #p1 {
-        margin-left: 20px;
-        margin-top: 250px;
+        left: 20px;
     }
 
     #p2{
-        margin-left: 960px;
-        margin-top: 250px;
+        right: 20px;   
+    }
+
+    #d1 {
+        left: 0px;
+        height: 100%;
     }
 
     #d2 {
-        margin-left: 990.5px;
+        right: 0px;
+        height: 100%;
     }
 
 </style>
 </body>
 <script>
     var direction = 0;
-    var speed = 5;
-    var p1pos = 50;
-    var p2pos = 50;
-    var ms = 10;
+    const speed = 50;
+    let p1pos = 230;
+    let p2pos = 230;
+    const ms = 10;
+    let p1ms = ms;
+    let p2ms = ms;
 
+    setInterval(() => {
+        console.log( p1ms + " " + p2ms);
+        p1pos += p1ms;
+        p2pos += p2ms;
+        console.log(p1pos + " " + p2pos);
+        document.getElementById("p2").style.top = p2pos + "px";
+        document.getElementById("p1").style.top = p1pos + "px";
+    }, speed);
     
     //arrowup
     document.addEventListener('keydown', function(event) {
     if(event.keyCode == 38) {
-        p1pos = p1pos - ms;
-        document.getElementById("p2").style.top = p1pos + "px";
-    }
-
+        p2ms = -ms;
+    } 
     //arrowdown
-    if(event.keyCode == 40) {
-        p1pos = p1pos + ms;
-        document.getElementById("p2").style.top = p1pos + "px";
+    if (event.keyCode == 40) {
+        p2ms = +ms;
+    } 
+
+    if (!event.keyCode == 40 | !event.keyCode == 38) {
+        console.log("nobuttonsarepressed")
+        p2ms = 0;
     }
+    //arrowup
     if(event.keyCode == 87) {
-        p1pos = p1pos - ms;
-        document.getElementById("p1").style.top = p1pos + "px";
+        p1pms = -ms;
+    } 
+    //arrowdown
+    if (event.keyCode == 83) {
+        p1ms = ms;
     }
 
-    //arrowdown
-    if(event.keyCode == 83) {
-        p1pos = p1pos + ms;
-        document.getElementById("p1").style.top = p1pos + "px";
+    if (!event.keyCode == 83 | !event.keyCode == 87){
+        console.log("nobuttonsarepressed")
+        p1ms = 0;
     }
     });
 </script>
