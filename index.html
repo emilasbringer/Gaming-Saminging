@@ -12,10 +12,11 @@
     </header>
     
     <div class="headeritems">
-        <div class="headeritem"></a><a href="Pissgame.html" class="headeritemtext">Gridgame3000</a></div>
-        <div class="headeritem"></a><a href="catchtheemil.html" class="headeritemtext">Catchtheemil</a></div>
-        <div class="headeritem"></a><a href="tictactoe.html" class="headeritemtext">Tic Tac Toe</a></div>
-        <div class="headeritem"></a><a href="pingpong.html" class="headeritemtext">Ping Pong Mega Death</a></div>
+        <a href="Pissgame.html" class="headeritem"><div class="headeritembutton">Gridgame3000<div class="thumbnail"></div></div></a>
+        <a href="catchtheemil.html" class="headeritem"><div class="headeritembutton">catchtheemil<div class="thumbnail"></div></div></a>
+        <a href="tictactoe.html" class="headeritem"><div class="headeritembutton">Tic Tac Toe<div class="thumbnail"></div></div></a>
+        <a href="pingpong.html" class="headeritem"><div class="headeritembutton">Ping Pong Mega Death<div class="thumbnail"></div></div></a>
+        <a href="dodgegame.html" class="headeritem"><div class="headeritembutton">Dodgegame<div class="thumbnail"></div></div></a>
     </div>
 </body>
 <style>
@@ -46,25 +47,26 @@
         border-bottom: black 2px solid ;
     }
     .headeritems {
-        position: relative;
-        height: 250px;
+        height: 50vw;
         display: flex;
         width: 90%;
         margin: auto;
         margin-top: 3%;
     }
-    .headeritemtext {
-        position: relative;
-        height: 25px;
-        text-align: center;
-        border: black 2px solid;
-        background: red;
+    .headeritembutton {
+        display: inline-block;
         width: 100%;
+        height: 25px;
+        background-color: #f44336;
+        color: #FFFFFF;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        opacity: 0.9;
     }
     .headeritem {
-        position: relative;
-        width: 50%;
-        height: 100%;
+        width: 400px;
+        height: 30%;
         margin-left: 20px;
         margin-right: 20px;
         border: 2px solid;
