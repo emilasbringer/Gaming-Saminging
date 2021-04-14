@@ -7,48 +7,66 @@
     <title>Dodge Game</title>
 </head>
 <body>
-    <div class="character" id="champion"></div>
+    <div class="block" id="p2"></div>
 </body>
 <style>
-    .character{
+    body{
+        margin:0;
+    }
+    .block{
         background-color: black;
         width:250px;
         height:250px;
+        position:absolute;
+        top: 0;
+        left: 0;
     }
 </style>
 <script>
-document.addEventListener('keydown', function(event) {
-    //left
-    if(event.keyCode == 37) {
-        champion.x -= 1;
-    }
-    //top
-    else if(event.keyCode == 38) {
-        object.y -= 1;
-    }
-    //right
-    else if(event.keyCode == 39) {
-        object.x += 1;
-    }
-    //bottom
-    else if(event.keyCode == 40) {
-        object.y += 1;
-    }
-});
+    var direction = 0;
+    const speed = 50;
+    let p1pos = 230;
+    let p2pos = 230;
+    const ms = 10;
+    let p1ms = ms;
+    let p2ms = ms;
 
-function renderCanvas(){
-    ctx.fillStyle = "#000000";
-    ctx.fillRect(0, 0, 600, 600);
-} 
-function renderObject(){
-    ctx.fillStyle = "#FF0000";
-    ctx.fillRect(object.x, object.y, object.width, object.height);
-}
-function run(){
-    renderCanvas();
-    renderObject();
-}
+    setInterval(() => {
+        console.log( p1ms + " " + p2ms);
+        p1pos += p1ms;
+        p2pos += p2ms;
+        console.log(p1pos + " " + p2pos);
+        document.getElementById("p2").style.top = p2pos + "px";
+        document.getElementById("p1").style.top = p1pos + "px";
+    }, speed);
+    
+    //arrowup
+    document.addEventListener('keydown', function(event) {
+    if(event.keyCode == 38) {
+        p2ms = -ms;
+    } 
+    //arrowdown
+    if (event.keyCode == 40) {
+        p2ms = +ms;
+    } 
 
-setInterval(run, 10)
+    if (!event.keyCode == 40 | !event.keyCode == 38) {
+        console.log("nobuttonsarepressed")
+        p2ms = 0;
+    }
+    //arrowup
+    if(event.keyCode == 87) {
+        p1pms = -ms;
+    } 
+    //arrowdown
+    if (event.keyCode == 83) {
+        p1ms = ms;
+    }
+
+    if (!event.keyCode == 83 | !event.keyCode == 87){
+        console.log("nobuttonsarepressed")
+        p1ms = 0;
+    }
+
 </script>
 </html>
