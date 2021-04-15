@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="as" id="p2"></div>
-    <div id="test">aws</div>
+    <div id="test"></div>
 </body>
 <style>
     body{
@@ -24,11 +24,13 @@
     }
 </style>
 <script>
-function keyCode(event) {
+    document.addEventListener('keydown', function(event){
+        function keyCode(event) {
   var x = event.keyCode;
-  if (x == 87) {
-    document.getElementById("test").innerHTML = "asdasdasdasd";
+  if (x == 27) {
+    alert ("You pressed the Escape key!");
   }
 }
+});
 </script>
 </html>
